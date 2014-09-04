@@ -251,6 +251,11 @@
 
         var callbackResult, fieldValue, result, fieldName = getFieldName(node, useIdIfEmptyName);
 
+        //if the callback returns undefined do not serialize the node
+        if (typeof(callbackResult) === 'undefined') {
+            return [];
+        }
+
         callbackResult = nodeCallback && nodeCallback(node);
 
         if (callbackResult && callbackResult.name) {
